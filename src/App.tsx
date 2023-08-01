@@ -1,32 +1,36 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment } from "./counterSlice";
+import LoggedInChecker from "./auth/token_handler";
+import { Routes, Route } from "react-router-dom";
+import Login from "./auth/login";
+import Register from "./auth/register";
+import LandingPage from "./landingPage";
 
-function App() {
-  const count = useSelector((state) => state.counter.value);
-  const dispatch = useDispatch();
-
+const App = () => {
   return (
-    <>
-      <div>
-        <div>
-          <button
-            aria-label="increment value"
-            onClick={() => dispatch(increment())}
-          >
-            increment
-          </button>
-          <span>{count}</span>
-          <button
-            aria-label="decrement value"
-            onClick={() => dispatch(decrement())}
-          >
-            increment
-          </button>
-        </div>
-      </div>
-    </>
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+
+        <Route
+          path="/login"
+          element={
+            <LoggedInChecker>
+              <Login />
+            </LoggedInChecker>
+          }
+        />
+
+        <Route
+          path="/register"
+          element={
+            <LoggedInChecker>
+              <Register />
+            </LoggedInChecker>
+          }
+        />
+      </Routes>
+    </div>
   );
-}
+};
 
 export default App;
