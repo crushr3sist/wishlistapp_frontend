@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./auth/login";
 import Register from "./auth/register";
 import LandingPage from "./landingPage";
-
+import "../sass/index.scss";
 const App = () => {
   return (
     <div className="App">

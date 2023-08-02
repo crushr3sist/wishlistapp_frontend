@@ -1,24 +1,42 @@
-import * as React from "react";
+import "./styles.scss";
 import Button from "@mui/material/Button";
-import { Card } from "@mui/material";
-import CardActions from "@mui/material/CardActions";
+import { Card, TextField } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
+
 const registerComponent = () => {
   return (
-    <div style={{ position: "fixed", padding: "50px" }}>
-      <Card
-        style={{
-          // minWidth: "70vw",
-          // minHeight: "85vh",
-          height: "80vh",
-          width: "80vw",
-
-          backgroundColor: "#1111",
-        }}
-      >
+    <div className="mainContainer">
+      <Card className="regCard">
         <CardContent>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <Button variant="contained" style={{}} onClick={() => {}}>
+          <div className="contentCard">
+            <h1 className="title">Register</h1>
+            <TextField
+              required
+              className="textFields"
+              id="outlined-required"
+              label="Required"
+              autoComplete="current-username"
+            />
+
+            <TextField
+              required
+              className="textFields"
+              id="outlined-email-input"
+              label="email"
+              type="email"
+              autoComplete="current-password"
+            />
+
+            <TextField
+              required
+              className="textFields"
+              id="outlined-password-input"
+              label="Password"
+              type="password"
+              autoComplete="current-password"
+            />
+
+            <Button variant="contained" onClick={() => {}}>
               Register
             </Button>
           </div>
