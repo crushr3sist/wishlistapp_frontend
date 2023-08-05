@@ -7,9 +7,12 @@ import { Card, TextField } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
 import axios from "axios";
 import { addToken } from "../slices/tokenStore";
+import { useNavigate } from "react-router-dom";
+
 const LoginComponent = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigation = useNavigate();
   const token = useSelector((state) => state.token.token);
   const dispatch = useDispatch();
 
@@ -25,6 +28,7 @@ const LoginComponent = () => {
       .then(async (e) => {
         console.log(e.data.access_token);
         await dispatch(addToken(e.data.access_token));
+        navigation("/priv");
       });
   };
 
@@ -60,7 +64,11 @@ const LoginComponent = () => {
             <Button
               variant="contained"
               onClick={() => {
-                loginUser(username, password);
+                try {
+                  loginUser(username, password);
+                } catch {
+                  console.log("there was an error");
+                }
               }}
             >
               Login
