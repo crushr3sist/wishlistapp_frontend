@@ -2,8 +2,29 @@ import "./styles.scss";
 import Button from "@mui/material/Button";
 import { Card, TextField } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
+import axios from "axios";
+import { useState } from "react";
 
-const registerComponent = () => {
+const RegisterComponent = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const registerUser = async (
+    username: string,
+    email: string,
+    password: string
+  ) => {
+    await axios.post(
+      "http://localhost:8000/users/register",
+      new URLSearchParams({
+        username: username,
+        email: email,
+        password: password,
+      })
+    );
+  };
+
   return (
     <div className="mainContainer">
       <Card className="regCard">
@@ -14,8 +35,11 @@ const registerComponent = () => {
               required
               className="textFields"
               id="outlined-required"
-              label="Required"
+              label="username"
               autoComplete="current-username"
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
             />
 
             <TextField
@@ -25,6 +49,9 @@ const registerComponent = () => {
               label="email"
               type="email"
               autoComplete="current-password"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             />
 
             <TextField
@@ -34,9 +61,18 @@ const registerComponent = () => {
               label="Password"
               type="password"
               autoComplete="current-password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+                console.log(password);
+              }}
             />
 
-            <Button variant="contained" onClick={() => {}}>
+            <Button
+              variant="contained"
+              onClick={() => {
+                registerUser(username, email, password);
+              }}
+            >
               Register
             </Button>
           </div>
@@ -46,4 +82,4 @@ const registerComponent = () => {
   );
 };
 
-export default registerComponent;
+export default RegisterComponent;

@@ -1,10 +1,12 @@
 import React from "react";
-import LoggedInChecker from "./auth/token_handler";
+import AuthRules, { RequireToken } from "./auth/token_handler";
 import { Routes, Route } from "react-router-dom";
 import Login from "./auth/login";
 import Register from "./auth/register";
 import LandingPage from "./landingPage";
 import "../sass/index.scss";
+import Priv from "./priv";
+import Logout from "./logout";
 const App = () => {
   return (
     <div className="App">
@@ -14,18 +16,34 @@ const App = () => {
         <Route
           path="/login"
           element={
-            <LoggedInChecker>
+            <AuthRules>
               <Login />
-            </LoggedInChecker>
+            </AuthRules>
           }
         />
 
         <Route
           path="/register"
           element={
-            <LoggedInChecker>
+            <AuthRules>
               <Register />
-            </LoggedInChecker>
+            </AuthRules>
+          }
+        />
+        <Route
+          path="/priv"
+          element={
+            <RequireToken>
+              <Priv />
+            </RequireToken>
+          }
+        />
+        <Route
+          path="/logout"
+          element={
+            <RequireToken>
+              <Logout />
+            </RequireToken>
           }
         />
       </Routes>

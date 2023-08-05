@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.scss";
+import { useSelector, useDispatch } from "react-redux";
+
 import Button from "@mui/material/Button";
 import { Card, TextField } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
+import axios from "axios";
+import { addToken } from "../slices/tokenStore";
+const LoginComponent = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const token = useSelector((state) => state.token.token);
+  const dispatch = useDispatch();
 
-const loginComponent = () => {
+  const loginUser = async (username: string, password: string) => {
+    await axios
+      .post(
+        "http://localhost:8000/users/login",
+        new URLSearchParams({
+          username: username,
+          password: password,
+        })
+      )
+      .then(async (e) => {
+        console.log(e.data.access_token);
+        await dispatch(addToken(e.data.access_token));
+      });
+  };
+
   return (
     <div className="mainContainer">
       <Card className="regCard">
@@ -14,10 +37,12 @@ const loginComponent = () => {
               required
               className="textFields"
               id="outlined-required"
-              label="Required"
-              defaultValue="Username"
+              label="username"
               sx={{ input: { color: "white" } }}
               autoComplete="current-username"
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
             />
 
             <TextField
@@ -27,10 +52,18 @@ const loginComponent = () => {
               label="Password"
               type="password"
               autoComplete="current-password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
 
-            <Button variant="contained" onClick={() => {}}>
-              Register
+            <Button
+              variant="contained"
+              onClick={() => {
+                loginUser(username, password);
+              }}
+            >
+              Login
             </Button>
           </div>
         </CardContent>
@@ -39,4 +72,4 @@ const loginComponent = () => {
   );
 };
 
-export default loginComponent;
+export default LoginComponent;
