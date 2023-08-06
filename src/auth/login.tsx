@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import { Card, TextField } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
 import axios from "axios";
-import { addToken } from "../slices/tokenStore";
+import { addToken, setExpire } from "../slices/tokenStore";
 import { useNavigate } from "react-router-dom";
 
 const LoginComponent = () => {
@@ -28,8 +28,11 @@ const LoginComponent = () => {
       .then(async (e) => {
         console.log(e.data.access_token);
         await dispatch(addToken(e.data.access_token));
+        await dispatch(setExpire());
+
         navigation("/priv");
-      });
+      })
+      .catch((e) => console.log(e));
   };
 
   return (
