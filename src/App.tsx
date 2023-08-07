@@ -5,8 +5,10 @@ import Login from "./auth/login";
 import Register from "./auth/register";
 import LandingPage from "./landingPage";
 import "../sass/index.scss";
+import "../src/wishes/index.css";
 import Priv from "./auth/priv";
 import Logout from "./auth/logout";
+import UserDashboard from "./wishes/userDashboard";
 const App = () => {
   return (
     <div className="App">
@@ -38,10 +40,10 @@ const App = () => {
           }
         />
         <Route
-          path="/priv"
+          path="/dashboard"
           element={
             <PrivRoutes>
-              <Priv />
+              <UserDashboard />
             </PrivRoutes>
           }
         />

@@ -28,8 +28,6 @@ const LoginComponent = () => {
         console.log(e.data.access_token);
         await dispatch(addToken(e.data.access_token));
         await dispatch(setExpire());
-
-        navigation("/priv");
       })
       .catch((e) => console.log(e));
   };

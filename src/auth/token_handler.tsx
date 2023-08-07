@@ -58,7 +58,7 @@ export const NonPrivRoutes = ({ children: child }: { children: any }) => {
   const navigation = useNavigate();
 
   if (isLoggedIn) {
-    navigation("/priv", { state: location });
+    navigation("/dashboard", { state: location });
   } else {
     return child;
   }
