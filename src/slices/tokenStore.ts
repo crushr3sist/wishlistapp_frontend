@@ -6,10 +6,11 @@ const initialState = {
   expire: "",
   isLoggedin: false,
 };
-
-const date = Date.now();
-const timeDiff = 60 * 60 * 24 * 30;
-const expTime = date / 1000 + timeDiff;
+const expTime = () => {
+  const date = Date.now();
+  const timeDiff = 60 * 60 * 24 * 30;
+  return date / 1000 + timeDiff;
+};
 
 export const tokenSlice = createSlice({
   name: "token",
@@ -21,7 +22,8 @@ export const tokenSlice = createSlice({
       setToken(action.payload)),
 
     setExpire: (state) =>
-      void ((state.expire = expTime.toString()), setTokenExpire(state.expire)),
+      void ((state.expire = expTime().toString()),
+      setTokenExpire(state.expire)),
 
     removeToken: (state) => {
       void ((state.token = ""),

@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom";
 const LoginComponent = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigation = useNavigate();
   const dispatch = useDispatch();
 
   const loginUser = async (username: string, password: string) => {
@@ -42,7 +41,6 @@ const LoginComponent = () => {
               className="textFields"
               id="outlined-required"
               label="username"
-              sx={{ input: { color: "white" } }}
               autoComplete="current-username"
               onChange={(e) => {
                 setUsername(e.target.value);

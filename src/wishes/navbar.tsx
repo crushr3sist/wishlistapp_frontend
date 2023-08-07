@@ -10,19 +10,15 @@ import {
   NavbarMenu,
   NavbarMenuToggle,
 } from "@nextui-org/react";
+import { useNavigate } from "react-router";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const navigate = useNavigate();
   const menuItems = [
-    "Profile",
     "Dashboard",
     "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
     "My Settings",
-    "Team Settings",
     "Help & Feedback",
     "Log Out",
   ];
@@ -37,27 +33,42 @@ const NavBar = () => {
 
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
-          <p className="font-bold text-inherit">ACME</p>
+          <p className="font-bold text-inherit">Wishes</p>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarBrand>
-          <p className="font-bold text-inherit">ACME</p>
+          <p className="font-bold  text-inherit">Wishes</p>
         </NavbarBrand>
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Customers
+          <Link
+            color="foreground"
+            onClick={() => {
+              navigate("/dashboard");
+            }}
+          >
+            dashboard
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
+          <Link
+            onClick={() => {
+              navigate("/foryou");
+            }}
+            aria-current="page"
+          >
+            For you
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link
+            color="foreground"
+            onClick={() => {
+              navigate("/friends");
+            }}
+          >
+            Friends
           </Link>
         </NavbarItem>
       </NavbarContent>
@@ -68,7 +79,7 @@ const NavBar = () => {
         </NavbarItem>
         <NavbarItem>
           <Button as={Link} color="warning" href="#" variant="flat">
-            Sign Up
+            msgs
           </Button>
         </NavbarItem>
       </NavbarContent>

@@ -9,6 +9,8 @@ import "../src/wishes/index.css";
 import Priv from "./auth/priv";
 import Logout from "./auth/logout";
 import UserDashboard from "./wishes/userDashboard";
+import { Wishlists } from "./wishes/wishlists";
+
 const App = () => {
   return (
     <div className="App">
@@ -45,6 +47,14 @@ const App = () => {
             <PrivRoutes>
               <UserDashboard />
             </PrivRoutes>
+          }
+        />
+        <Route
+          path="/wishlists"
+          element={
+            // <PrivRoutes>
+            <Wishlists />
+            // </PrivRoutes>
           }
         />
         <Route
