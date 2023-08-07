@@ -8,7 +8,6 @@ const initialState = {
 
 const date = Date.now();
 const timeDiff = 60 * 60 * 24 * 30;
-
 const expTime = date / 1000 + timeDiff;
 
 export const tokenSlice = createSlice({
@@ -22,8 +21,10 @@ export const tokenSlice = createSlice({
       void ((state.expire = expTime.toString()), setTokenExpire(state.expire)),
 
     removeToken: (state) => {
-      localStorage.removeItem("token");
-      state.token = "";
+      void ((state.token = ""),
+      (state.expire = ""),
+      localStorage.removeItem("token"),
+      localStorage.removeItem("token-expire"));
     },
   },
 });

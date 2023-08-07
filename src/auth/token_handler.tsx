@@ -23,7 +23,6 @@ const refreshToken = async (token: string) => {
       token: token,
     })
   );
-  console.log(response);
 };
 
 export const fetchToken = async (): Promise<string> => {

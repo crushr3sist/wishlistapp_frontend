@@ -5,13 +5,20 @@ import Login from "./auth/login";
 import Register from "./auth/register";
 import LandingPage from "./landingPage";
 import "../sass/index.scss";
-import Priv from "./priv";
-import Logout from "./logout";
+import Priv from "./auth/priv";
+import Logout from "./auth/logout";
 const App = () => {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route
+          path="/"
+          element={
+            <AuthRules>
+              s<LandingPage />
+            </AuthRules>
+          }
+        />
 
         <Route
           path="/login"
