@@ -1,5 +1,5 @@
 import React from "react";
-import AuthRules, { RequireToken } from "./auth/token_handler";
+import { NonPrivRoutes, PrivRoutes } from "./auth/token_handler";
 import { Routes, Route } from "react-router-dom";
 import Login from "./auth/login";
 import Register from "./auth/register";
@@ -14,43 +14,43 @@ const App = () => {
         <Route
           path="/"
           element={
-            <AuthRules>
-              s<LandingPage />
-            </AuthRules>
+            <NonPrivRoutes>
+              <LandingPage />
+            </NonPrivRoutes>
           }
         />
 
         <Route
           path="/login"
           element={
-            <AuthRules>
+            <NonPrivRoutes>
               <Login />
-            </AuthRules>
+            </NonPrivRoutes>
           }
         />
 
         <Route
           path="/register"
           element={
-            <AuthRules>
+            <NonPrivRoutes>
               <Register />
-            </AuthRules>
+            </NonPrivRoutes>
           }
         />
         <Route
           path="/priv"
           element={
-            <RequireToken>
+            <PrivRoutes>
               <Priv />
-            </RequireToken>
+            </PrivRoutes>
           }
         />
         <Route
           path="/logout"
           element={
-            <RequireToken>
+            <PrivRoutes>
               <Logout />
-            </RequireToken>
+            </PrivRoutes>
           }
         />
       </Routes>

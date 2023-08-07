@@ -4,6 +4,7 @@ import { setToken, setTokenExpire } from "../auth/token_handler";
 const initialState = {
   token: "",
   expire: "",
+  isLoggedin: false,
 };
 
 const date = Date.now();
@@ -15,7 +16,9 @@ export const tokenSlice = createSlice({
   initialState,
   reducers: {
     addToken: (state, action) =>
-      void ((state.token = action.payload), setToken(action.payload)),
+      void ((state.token = action.payload),
+      (state.isLoggedin = true),
+      setToken(action.payload)),
 
     setExpire: (state) =>
       void ((state.expire = expTime.toString()), setTokenExpire(state.expire)),
@@ -23,6 +26,7 @@ export const tokenSlice = createSlice({
     removeToken: (state) => {
       void ((state.token = ""),
       (state.expire = ""),
+      (state.isLoggedin = false),
       localStorage.removeItem("token"),
       localStorage.removeItem("token-expire"));
     },

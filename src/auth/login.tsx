@@ -1,6 +1,6 @@
 import "./styles.scss";
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import Button from "@mui/material/Button";
 import { Card, TextField } from "@mui/material";
@@ -13,7 +13,6 @@ const LoginComponent = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigate();
-  const token = useSelector((state) => state.token.token);
   const dispatch = useDispatch();
 
   const loginUser = async (username: string, password: string) => {
