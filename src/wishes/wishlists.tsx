@@ -3,12 +3,25 @@ import store from "../store";
 import { useDispatch } from "react-redux";
 import { setRecords } from "../slices/wishlistStore";
 import { dataExists, getWishlists } from "./wishlistFetcher";
-import { fetchToken } from "../auth/token_handler";
 
 export const Wishlists = () => {
+  const dispatch = useDispatch();
+  const data = async () => {
+    await getWishlists()
+      .then((wishlistData) => {
+        console.log(wishlistData);
+        dispatch(setRecords(wishlistData));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    data();
+  });
   return (
     <>
-      <button onClick={getWishlists}>fetch</button>
+      <button onClick={() => {}}>fetch</button>
     </>
   );
 };

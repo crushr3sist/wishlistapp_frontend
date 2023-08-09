@@ -2,6 +2,7 @@ import NavBar from "./navbar";
 import { Input, Button } from "@nextui-org/react";
 import "./dashboard.scss";
 import { useNavigate } from "react-router-dom";
+
 const UserDashboard = () => {
   const navigate = useNavigate();
   return (

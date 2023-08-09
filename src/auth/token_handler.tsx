@@ -42,7 +42,6 @@ export const fetchToken = async (): Promise<string> => {
 export const PrivRoutes = ({ children: child }: { children: any }) => {
   const navigation = useNavigate();
   const isLoggedIn = store.getState().token.isLoggedin;
-  console.log(isLoggedIn);
 
   if (isLoggedIn === false) {
     return navigation("/login");
