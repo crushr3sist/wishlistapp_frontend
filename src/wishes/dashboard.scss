@@ -6,7 +6,7 @@
 .creationDiv {
   background-color: rgb(196, 189, 189);
   margin-top: 50px;
-  height: 36vh;
+  height: auto;
   border-radius: 10px;
   box-shadow: 5px 10px 50px 10px;
   color: rgb(144, 177, 177);
@@ -25,15 +25,4 @@
   box-shadow: 5px 5px 5px 1px;
 
   background-color: rgb(198, 191, 191);
-}
-
-.dataDispDiv {
-  background-color: rgb(196, 189, 189);
-
-  margin-top: 50px;
-  border-radius: 10px;
-  box-shadow: 5px 10px 50px 10px;
-  height: 36vh;
-  overflow: auto;
-  color: rgb(180, 132, 170);
 }

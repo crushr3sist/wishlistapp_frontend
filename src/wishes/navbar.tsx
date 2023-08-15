@@ -17,6 +17,7 @@ const NavBar = () => {
   const navigate = useNavigate();
   const menuItems = [
     "Dashboard",
+    "wishlists",
     "Activity",
     "My Settings",
     "Help & Feedback",

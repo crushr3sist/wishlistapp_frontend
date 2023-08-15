@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const UserDashboard = () => {
   const navigate = useNavigate();
+
   return (
     <>
       <NavBar />
@@ -24,7 +25,6 @@ const UserDashboard = () => {
           <Input className="inputs" type="text" label="current_price" />
           <Input className="inputs" type="text" label="Wishlist" />
         </div>
-        <div className="dataDispDiv"></div>
       </div>
     </>
   );

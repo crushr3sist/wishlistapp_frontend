@@ -2,9 +2,10 @@ import axios from "axios";
 import store from "../store";
 import { useDispatch } from "react-redux";
 import { setRecords } from "../slices/wishlistStore";
-const state = store.getState();
 
 export const getWishlists = async () => {
+  const state = store.getState();
+  console.log(state.token.token);
   try {
     const response = await axios.post(
       "http://localhost:8000/wishlist/get/all",

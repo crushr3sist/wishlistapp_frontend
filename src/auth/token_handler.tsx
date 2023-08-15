@@ -34,9 +34,9 @@ export const fetchToken = async (): Promise<string> => {
   });
 
   const tokenFromStorage = await localStorage.getItem("token");
-  const refreshedToken = await refreshToken(tokenFromStorage);
+  // const refreshedToken = await refreshToken(tokenFromStorage);
 
-  return refreshedToken;
+  return tokenFromStorage;
 };
 
 export const PrivRoutes = ({ children: child }: { children: any }) => {
