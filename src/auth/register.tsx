@@ -7,8 +7,8 @@ import { useState } from "react";
 
 const RegisterComponent = () => {
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   const registerUser = async (
     username: string,
